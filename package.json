@@ -1,4 +1,27 @@
 {
   "name": "teste-frontend",
-  "packageManager": "yarn@4.1.0"
+  "packageManager": "yarn@4.1.0",
+  "scripts": {
+    "gen:api": "sdkgen sdkgen/api.sdkgen -o src/api.ts -t typescript_nodeserver",
+    "gen:client": "sdkgen sdkgen/api.sdkgen -o web/api.ts -t typescript_web",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "debug": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@sdkgen/cli": "^2.3.2",
+    "@types/luxon": "^3",
+    "@types/node": "^20.11.21",
+    "@types/triple-beam": "^1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@sdkgen/node-runtime": "^2.3.2",
+    "dotenv": "^16.4.5",
+    "luxon": "^3.4.4",
+    "safe-stable-stringify": "^2.4.3",
+    "triple-beam": "^1.4.1",
+    "winston": "^3.11.0"
+  }
 }

@@ -1,0 +1,38 @@
+type User {
+  name: string
+  email: email
+  password: string
+  cpf: string
+  birthDate: date
+}
+
+type SetupUser {
+  ...User
+}
+
+type UserInfo {
+  ...User
+  id: uint
+  isActive: bool
+  inactiveReason: string?
+  deletedAt: date?
+}
+
+error UserNotFound
+error InvalidArgument {
+  field: string
+  reason: enum {
+    required
+    invalid
+    minLength
+    maxLength
+  }
+}
+
+fn createUser(user: SetupUser): UserInfo
+fn updateUser(id: uint, user: SetupUser): UserInfo
+fn getAllUsers(): UserInfo[]
+fn getUserById(id: uint): UserInfo
+fn activateUser(userId: uint): bool
+fn inactivateUser(userId: int, reason: string?): bool
+fn deleteUser(userId: int): bool
